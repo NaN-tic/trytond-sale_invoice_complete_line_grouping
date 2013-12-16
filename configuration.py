@@ -66,7 +66,7 @@ class ConfigurationCompany(ModelSQL):
     company = fields.Many2One('company.company', 'Company', required=True,
         ondelete='CASCADE', select=True)
     invoice_group_sequence = fields.Many2One('ir.sequence',
-        'Invoice group sequence', required=True, domain=[
+        'Invoice group sequence', domain=[
             ('company', 'in',
                 [Eval('context', {}).get('company', -1), None]),
             ('code', '=', 'sale.invoice.group'),
