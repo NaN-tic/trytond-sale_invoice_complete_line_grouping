@@ -12,7 +12,7 @@ class SaleInvoiceGroup(ModelSQL, ModelView):
     'Sale Invoice Group'
     __name__ = 'sale.invoice.group'
 
-    code = fields.Char('Code', required=True)
+    code = fields.Char('Code', required=True, readonly=True)
     name = fields.Char('Name')
 
     @classmethod
