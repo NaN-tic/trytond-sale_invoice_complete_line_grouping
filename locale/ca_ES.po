@@ -28,11 +28,11 @@ msgstr "Identificador"
 
 msgctxt "field:sale.invoice.group,name:"
 msgid "Name"
-msgstr "Nom del camp"
+msgstr "Nom"
 
 msgctxt "field:sale.invoice.group,rec_name:"
 msgid "Name"
-msgstr "Nom del camp"
+msgstr "Nom"
 
 msgctxt "field:sale.invoice.group,write_date:"
 msgid "Write Date"
