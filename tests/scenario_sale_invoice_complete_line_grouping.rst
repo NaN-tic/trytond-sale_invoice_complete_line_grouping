@@ -348,12 +348,11 @@ Sale 3 lines with an invoice method 'on shipment'::
 Validate Shipments::
 
     >>> shipment, = sale.shipments
-    >>> moves = sale.moves
     >>> config.user = stock_user.id
-    >>> for move in moves:
+    >>> for move in shipment.inventory_moves:
     ...     move.quantity = 2.0
     ...     move.save()
-    >>> shipment.reload()
+    >>> shipment.save()
     >>> ShipmentOut.assign_try([shipment.id], config.context)
     True
     >>> ShipmentOut.pack([shipment.id], config.context)
