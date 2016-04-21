@@ -48,7 +48,7 @@ class Sale:
     __name__ = 'sale.sale'
 
     def get_completed_groups(self):
-        ' Retunrs a list of completed groups'
+        'Returns a list of completed groups'
         groups = {}
         completed_groups = []
         for line in self.lines:
