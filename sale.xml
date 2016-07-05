@@ -5,10 +5,10 @@ contains the full copyright notices and license terms. -->
 	<data>
 
 		<record model="ir.ui.view" id="view_sale_line_view_form">
-			<field name="name">sale_line_form</field>
 			<field name="model">sale.line</field>
+            <field name="type" eval="None"/>
             <field name="inherit" ref="sale.sale_line_view_form" />
-			<field name="type">form</field>
+            <field name="name">sale_line_form</field>
 		</record>
 
 		<record model="ir.ui.view" id="view_sale_invoice_group_form">

@@ -15,9 +15,9 @@
 
         <record model="ir.ui.view" id="sale_configuration_view_form">
             <field name="model">sale.configuration</field>
-            <field name="type">form</field>
-            <field name="name">configuration_form</field>
+            <field name="type" eval="None"/>
             <field name="inherit" ref="sale.sale_configuration_view_form" />
+            <field name="name">configuration_form</field>
         </record>
 
     </data>
