@@ -69,20 +69,6 @@ class Sale:
             return len(self.get_completed_groups()) > 0
         return True
 
-    def _get_invoice_line_sale_line(self, invoice_type):
-        if not self.invoice_complete:
-            return super(Sale, self)._get_invoice_line_sale_line(invoice_type)
-
-        res = {}
-        completed_groups = self.get_completed_groups()
-        for line in self.lines:
-            if not line.invoice_group in completed_groups:
-                continue
-            val = line.get_invoice_line(invoice_type)
-            if val:
-                res[line.id] = val
-        return res
-
 
 class SaleLine:
     __name__ = 'sale.line'
@@ -91,3 +77,11 @@ class SaleLine:
         ondelete='RESTRICT', depends=['type'], states={
             'invisible': Eval('type') != 'line',
             })
+
+    def get_invoice_line(self):
+        sale = self.sale
+        completed_groups = sale.get_completed_groups()
+        invoice_lines = []
+        if not sale.invoice_complete or self.invoice_group in completed_groups:
+            invoice_lines.extend(super(SaleLine, self).get_invoice_line())
+        return invoice_lines
