@@ -105,6 +105,15 @@ Create parties::
     >>> len(customer.addresses)
     3
 
+Create account category::
+
+    >>> ProductCategory = Model.get('product.category')
+    >>> account_category = ProductCategory(name="Account Category")
+    >>> account_category.accounting = True
+    >>> account_category.account_expense = expense
+    >>> account_category.account_revenue = revenue
+    >>> account_category.save()
+
 Create product::
 
     >>> ProductUom = Model.get('product.uom')
@@ -119,8 +128,7 @@ Create product::
     >>> template.salable = True
     >>> template.list_price = Decimal('10')
     >>> template.cost_price_method = 'fixed'
-    >>> template.account_expense = expense
-    >>> template.account_revenue = revenue
+    >>> template.account_category = account_category
     >>> template.save()
     >>> product, = template.products
     >>> template2 = ProductTemplate()
@@ -131,8 +139,7 @@ Create product::
     >>> template2.salable = True
     >>> template2.list_price = Decimal('10')
     >>> template2.cost_price_method = 'fixed'
-    >>> template2.account_expense = expense
-    >>> template2.account_revenue = revenue
+    >>> template2.account_category = account_category
     >>> template2.save()
     >>> product2, = template2.products
     >>> template3 = ProductTemplate()
@@ -143,8 +150,7 @@ Create product::
     >>> template3.salable = True
     >>> template3.list_price = Decimal('10')
     >>> template3.cost_price_method = 'fixed'
-    >>> template3.account_expense = expense
-    >>> template3.account_revenue = revenue
+    >>> template3.account_category = account_category
     >>> template3.save()
     >>> product3, = template3.products
 
