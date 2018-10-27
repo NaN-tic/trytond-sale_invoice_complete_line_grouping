@@ -2,15 +2,15 @@
 #copyright notices and license terms.
 
 from trytond.pool import Pool
-from .configuration import *
-from .sale import *
+from . import configuration
+from . import sale
 
 
 def register():
     Pool.register(
-        Configuration,
-        ConfigurationCompany,
-        SaleInvoiceGroup,
-        Sale,
-        SaleLine,
+        configuration.Configuration,
+        configuration.ConfigurationCompany,
+        sale.SaleInvoiceGroup,
+        sale.Sale,
+        sale.SaleLine,
         module='sale_invoice_complete_line_grouping', type_='model')
