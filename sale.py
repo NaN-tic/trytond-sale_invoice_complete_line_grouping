@@ -5,12 +5,12 @@ from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
 
 __all__ = ['SaleInvoiceGroup', 'Sale', 'SaleLine']
-__metaclass__ = PoolMeta
 
 
 class SaleInvoiceGroup(ModelSQL, ModelView):
     'Sale Invoice Group'
     __name__ = 'sale.invoice.group'
+    __metaclass__ = PoolMeta
 
     code = fields.Char('Code', required=True, readonly=True)
     name = fields.Char('Name')
@@ -46,6 +46,7 @@ class SaleInvoiceGroup(ModelSQL, ModelView):
 
 class Sale:
     __name__ = 'sale.sale'
+    __metaclass__ = PoolMeta
 
     def get_completed_groups(self):
         'Returns a list of completed groups'
@@ -72,6 +73,7 @@ class Sale:
 
 class SaleLine:
     __name__ = 'sale.line'
+    __metaclass__ = PoolMeta
 
     invoice_group = fields.Many2One('sale.invoice.group', 'Invoice Grouping',
         ondelete='RESTRICT', depends=['type'], states={
