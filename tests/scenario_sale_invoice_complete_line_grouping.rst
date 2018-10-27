@@ -188,7 +188,7 @@ Create an Inventory::
     >>> inventory.save()
     >>> Inventory.confirm([inventory.id], config.context)
     >>> inventory.state
-    u'done'
+    'done'
 
 Sale products without groups::
 
@@ -210,7 +210,7 @@ Sale products without groups::
     >>> Sale.confirm([sale.id], config.context)
     >>> Sale.process([sale.id], config.context)
     >>> sale.state
-    u'processing'
+    'processing'
     >>> sale.reload()
     >>> len(sale.shipments), len(sale.shipment_returns), len(sale.invoices)
     (1, 0, 0)
@@ -263,7 +263,7 @@ Sale 3 lines with an invoice method 'on shipment'::
     >>> Sale.confirm([sale.id], config.context)
     >>> Sale.process([sale.id], config.context)
     >>> sale.state
-    u'processing'
+    'processing'
     >>> sale.reload()
     >>> len(sale.shipments), len(sale.shipment_returns), len(sale.invoices)
     (1, 0, 0)
@@ -293,7 +293,7 @@ Validate Shipments::
     False
     >>> for move in moves_to_remove:
     ...     shipment2.moves.remove(move)
-    >>> shipment2.save()    
+    >>> shipment2.save()
     >>> ShipmentOut.assign_try([shipment2.id], config.context)
     True
     >>> ShipmentOut.pack([shipment2.id], config.context)

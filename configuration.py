@@ -6,10 +6,9 @@ from trytond.pyson import Eval
 from trytond.transaction import Transaction
 
 __all__ = ['Configuration', 'ConfigurationCompany']
-__metaclass__ = PoolMeta
 
 
-class Configuration:
+class Configuration(metaclass=PoolMeta):
     __name__ = 'sale.configuration'
 
     invoice_group_sequence = fields.Function(fields.Many2One(

@@ -7,10 +7,9 @@ from trytond.pyson import Eval
 __all__ = ['SaleInvoiceGroup', 'Sale', 'SaleLine']
 
 
-class SaleInvoiceGroup(ModelSQL, ModelView):
+class SaleInvoiceGroup(ModelSQL, ModelView, metaclass=PoolMeta):
     'Sale Invoice Group'
     __name__ = 'sale.invoice.group'
-    __metaclass__ = PoolMeta
 
     code = fields.Char('Code', required=True, readonly=True)
     name = fields.Char('Name')
@@ -36,17 +35,17 @@ class SaleInvoiceGroup(ModelSQL, ModelView):
 
     @classmethod
     def search_rec_name(cls, name, clause):
-        ids = map(int, cls.search([('code',) + tuple(clause[1:])], order=[]))
+        ids = [x.id for x in cls.search([('code',) + tuple(clause[1:])],
+                order=[])]
         if ids:
-            ids += map(int,
-                cls.search([('name',) + tuple(clause[1:])], order=[]))
+            ids += [x.id for x in cls.search([('name',) + tuple(clause[1:])],
+                    order=[])]
             return [('id', 'in', ids)]
         return [('name',) + tuple(clause[1:])]
 
 
-class Sale:
+class Sale(metaclass=PoolMeta):
     __name__ = 'sale.sale'
-    __metaclass__ = PoolMeta
 
     def get_completed_groups(self):
         'Returns a list of completed groups'
@@ -58,7 +57,7 @@ class Sale:
             value.append(line.move_done)
             groups[group] = value
 
-        for group, lines_completed in groups.iteritems():
+        for group, lines_completed in groups.items():
             if all(x for x in lines_completed):
                 completed_groups.append(group)
 
@@ -71,9 +70,8 @@ class Sale:
         return True
 
 
-class SaleLine:
+class SaleLine(metaclass=PoolMeta):
     __name__ = 'sale.line'
-    __metaclass__ = PoolMeta
 
     invoice_group = fields.Many2One('sale.invoice.group', 'Invoice Grouping',
         ondelete='RESTRICT', depends=['type'], states={
