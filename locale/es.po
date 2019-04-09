@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -6,9 +6,37 @@ msgctxt "field:sale.configuration,invoice_group_sequence:"
 msgid "Invoice group sequence"
 msgstr "Sequencia de grupos de facturación"
 
+msgctxt "field:sale.configuration.company,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:sale.configuration.company,create_date:"
+msgid "Create Date"
+msgstr "Fecha de creación"
+
+msgctxt "field:sale.configuration.company,create_uid:"
+msgid "Create User"
+msgstr "Usuario de creación"
+
+msgctxt "field:sale.configuration.company,id:"
+msgid "ID"
+msgstr "ID"
+
 msgctxt "field:sale.configuration.company,invoice_group_sequence:"
 msgid "Invoice group sequence"
 msgstr "Sequencia de grupos de facturación"
+
+msgctxt "field:sale.configuration.company,rec_name:"
+msgid "Record Name"
+msgstr "Nombre registro"
+
+msgctxt "field:sale.configuration.company,write_date:"
+msgid "Write Date"
+msgstr "Fecha de modificación"
+
+msgctxt "field:sale.configuration.company,write_uid:"
+msgid "Write User"
+msgstr "Usuario de modificación"
 
 msgctxt "field:sale.invoice.group,code:"
 msgid "Code"
@@ -24,14 +52,14 @@ msgstr "Usuario de creación"
 
 msgctxt "field:sale.invoice.group,id:"
 msgid "ID"
-msgstr "Identificador"
+msgstr "ID"
 
 msgctxt "field:sale.invoice.group,name:"
 msgid "Name"
 msgstr "Nombre"
 
 msgctxt "field:sale.invoice.group,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr "Nombre"
 
 msgctxt "field:sale.invoice.group,write_date:"
@@ -57,6 +85,10 @@ msgstr "Grupo de facturación para ventas"
 msgctxt "model:ir.sequence.type,name:sequence_type_invoice_group"
 msgid "Sale Invoice Group"
 msgstr "Grupo de facturación para ventas"
+
+msgctxt "model:sale.configuration.company,name:"
+msgid "Sale Configuration by Company"
+msgstr "Configuración de la venta por empresa"
 
 msgctxt "model:sale.invoice.group,name:"
 msgid "Sale Invoice Group"
