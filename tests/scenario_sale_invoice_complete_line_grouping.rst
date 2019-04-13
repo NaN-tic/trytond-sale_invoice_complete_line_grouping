@@ -206,9 +206,8 @@ Sale products without groups::
     >>> sale_line.product = product
     >>> sale_line.quantity = 2.0
     >>> sale.save()
-    >>> Sale.quote([sale.id], config.context)
-    >>> Sale.confirm([sale.id], config.context)
-    >>> Sale.process([sale.id], config.context)
+    >>> sale.click('quote')
+    >>> sale.click('confirm')
     >>> sale.state
     'processing'
     >>> sale.reload()
@@ -259,9 +258,8 @@ Sale 3 lines with an invoice method 'on shipment'::
     >>> sale_line.quantity = 5.0
     >>> sale_line.invoice_group = group2
     >>> sale.save()
-    >>> Sale.quote([sale.id], config.context)
-    >>> Sale.confirm([sale.id], config.context)
-    >>> Sale.process([sale.id], config.context)
+    >>> sale.click('quote')
+    >>> sale.click('confirm')
     >>> sale.state
     'processing'
     >>> sale.reload()
@@ -321,4 +319,3 @@ Validate Shipments::
     >>> sale.reload()
     >>> len(sale.shipments), len(sale.shipment_returns), len(sale.invoices)
     (3, 0, 2)
-
