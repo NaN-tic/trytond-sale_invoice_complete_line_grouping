@@ -124,7 +124,6 @@ Create product::
     >>> template.name = 'product'
     >>> template.default_uom = unit
     >>> template.type = 'goods'
-    >>> template.purchasable = True
     >>> template.salable = True
     >>> template.list_price = Decimal('10')
     >>> template.cost_price_method = 'fixed'
@@ -135,7 +134,6 @@ Create product::
     >>> template2.name = 'product2'
     >>> template2.default_uom = unit
     >>> template2.type = 'goods'
-    >>> template2.purchasable = True
     >>> template2.salable = True
     >>> template2.list_price = Decimal('10')
     >>> template2.cost_price_method = 'fixed'
@@ -146,7 +144,6 @@ Create product::
     >>> template3.name = 'product3'
     >>> template3.default_uom = unit
     >>> template3.type = 'goods'
-    >>> template3.purchasable = True
     >>> template3.salable = True
     >>> template3.list_price = Decimal('10')
     >>> template3.cost_price_method = 'fixed'
@@ -198,7 +195,6 @@ Sale products without groups::
     >>> sale = Sale()
     >>> sale.party = customer
     >>> sale.invoice_complete = True
-    >>> sale.delivery_address = address1
     >>> sale.payment_term = payment_term
     >>> sale.invoice_method = 'shipment'
     >>> sale_line = SaleLine()
@@ -239,7 +235,6 @@ Sale 3 lines with an invoice method 'on shipment'::
     >>> sale = Sale()
     >>> sale.party = customer
     >>> sale.invoice_complete = True
-    >>> sale.delivery_address = address1
     >>> sale.payment_term = payment_term
     >>> sale.invoice_method = 'shipment'
     >>> sale_line = SaleLine()
