@@ -56,7 +56,6 @@ Create account user::
     >>> account_user.groups.append(account_group)
     >>> account_user.save()
 
-
 Create fiscal year::
 
     >>> fiscalyear = set_fiscalyear_invoice_sequences(
@@ -82,9 +81,6 @@ Configure sale::
     >>> sale_config = SaleConfig(1)
     >>> sale_config.sale_shipment_method = 'order'
     >>> sale_config.sale_invoice_method = 'shipment'
-    >>> invoice_group_sequence, = Sequence.find([
-    ...     ('code', '=', 'sale.invoice.group')])
-    >>> sale_config.invoice_group_sequence = invoice_group_sequence
     >>> sale_config.save()
 
 Create parties::
@@ -211,11 +207,11 @@ Validate Shipments::
 
     >>> shipment, = sale.shipments
     >>> config.user = stock_user.id
-    >>> ShipmentOut = Model.get('stock.shipment.out')
-    >>> ShipmentOut.assign_try([shipment.id], config.context)
+    >>> shipment.click('assign_try')
     True
-    >>> ShipmentOut.pack([shipment.id], config.context)
-    >>> ShipmentOut.done([shipment.id], config.context)
+    >>> shipment.click('pick')
+    >>> shipment.click('pack')
+    >>> shipment.click('done')
     >>> config.user = sale_user.id
     >>> sale.reload()
     >>> len(sale.shipments), len(sale.shipment_returns), len(sale.invoices)
@@ -266,10 +262,11 @@ Validate Shipments::
     ...     move.quantity = 2.0
     ...     move.save()
     >>> shipment.save()
-    >>> ShipmentOut.assign_try([shipment.id], config.context)
+    >>> shipment.click('assign_try')
     True
-    >>> ShipmentOut.pack([shipment.id], config.context)
-    >>> ShipmentOut.done([shipment.id], config.context)
+    >>> shipment.click('pick')
+    >>> shipment.click('pack')
+    >>> shipment.click('done')
     >>> config.user = sale_user.id
     >>> sale.reload()
     >>> len(sale.shipments), len(sale.shipment_returns), len(sale.invoices)
@@ -284,29 +281,27 @@ Validate Shipments::
     >>> for move in moves_to_remove:
     ...     shipment2.moves.remove(move)
     >>> shipment2.save()
-    >>> ShipmentOut.assign_try([shipment2.id], config.context)
+    >>> shipment2.click('assign_try')
     True
-    >>> ShipmentOut.pack([shipment2.id], config.context)
-    >>> ShipmentOut.done([shipment2.id], config.context)
+    >>> shipment2.click('pick')
+    >>> shipment2.click('pack')
+    >>> shipment2.click('done')
     >>> config.user = sale_user.id
     >>> sale.reload()
     >>> len(sale.shipments), len(sale.shipment_returns), len(sale.invoices)
     (3, 0, 1)
     >>> invoice, = sale.invoices
 
-
-
     >>> len(invoice.lines) == 1
     True
 
-
-
     >>> shipment3, = sale.shipments.find([('state', '=', 'waiting')])
     >>> config.user = stock_user.id
-    >>> ShipmentOut.assign_try([shipment3.id], config.context)
+    >>> shipment3.click('assign_try')
     True
-    >>> ShipmentOut.pack([shipment3.id], config.context)
-    >>> ShipmentOut.done([shipment3.id], config.context)
+    >>> shipment3.click('pick')
+    >>> shipment3.click('pack')
+    >>> shipment3.click('done')
     >>> config.user = sale_user.id
     >>> sale.reload()
     >>> len(sale.shipments), len(sale.shipment_returns), len(sale.invoices)

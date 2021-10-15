@@ -3,28 +3,29 @@
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
+from trytond.transaction import Transaction
 
 __all__ = ['SaleInvoiceGroup', 'Sale', 'SaleLine']
 
 
-class SaleInvoiceGroup(ModelSQL, ModelView, metaclass=PoolMeta):
+class SaleInvoiceGroup(ModelSQL, ModelView):
     'Sale Invoice Group'
     __name__ = 'sale.invoice.group'
-
     code = fields.Char('Code', required=True, readonly=True)
     name = fields.Char('Name')
 
     @classmethod
     def create(cls, vlist):
         pool = Pool()
-        Sequence = pool.get('ir.sequence')
         Config = pool.get('sale.configuration')
+
+        company_id = Transaction().context.get('company')
 
         config = Config(1)
         for value in vlist:
             if not 'code' in value:
-                value['code'] = Sequence.get_id(
-                    config.invoice_group_sequence.id)
+                value['code'] = config.get_multivalue(
+                    'invoice_group_sequence', company=company_id).get()
         return super(SaleInvoiceGroup, cls).create(vlist)
 
     def get_rec_name(self, name):
@@ -72,7 +73,6 @@ class Sale(metaclass=PoolMeta):
 
 class SaleLine(metaclass=PoolMeta):
     __name__ = 'sale.line'
-
     invoice_group = fields.Many2One('sale.invoice.group', 'Invoice Grouping',
         ondelete='RESTRICT', depends=['type'], states={
             'invisible': Eval('type') != 'line',

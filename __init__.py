@@ -9,7 +9,7 @@ from . import sale
 def register():
     Pool.register(
         configuration.Configuration,
-        configuration.ConfigurationCompany,
+        configuration.ConfigurationSequence,
         sale.SaleInvoiceGroup,
         sale.Sale,
         sale.SaleLine,
