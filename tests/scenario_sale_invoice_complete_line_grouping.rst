@@ -208,7 +208,6 @@ Validate Shipments::
     >>> shipment, = sale.shipments
     >>> config.user = stock_user.id
     >>> shipment.click('assign_try')
-    True
     >>> shipment.click('pick')
     >>> shipment.click('pack')
     >>> shipment.click('done')
@@ -263,7 +262,6 @@ Validate Shipments::
     ...     move.save()
     >>> shipment.save()
     >>> shipment.click('assign_try')
-    True
     >>> shipment.click('pick')
     >>> shipment.click('pack')
     >>> shipment.click('done')
@@ -282,7 +280,6 @@ Validate Shipments::
     ...     shipment2.moves.remove(move)
     >>> shipment2.save()
     >>> shipment2.click('assign_try')
-    True
     >>> shipment2.click('pick')
     >>> shipment2.click('pack')
     >>> shipment2.click('done')
@@ -298,7 +295,6 @@ Validate Shipments::
     >>> shipment3, = sale.shipments.find([('state', '=', 'waiting')])
     >>> config.user = stock_user.id
     >>> shipment3.click('assign_try')
-    True
     >>> shipment3.click('pick')
     >>> shipment3.click('pack')
     >>> shipment3.click('done')
