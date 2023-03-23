@@ -55,11 +55,11 @@ class Sale(metaclass=PoolMeta):
         for line in self.lines:
             group = line.invoice_group
             value = groups[group] if group in groups else []
-            value.append(line.move_done)
+            value.append(line.moves_progress or 0)
             groups[group] = value
 
         for group, lines_completed in groups.items():
-            if all(x for x in lines_completed):
+            if all(x >= 1.0 for x in lines_completed):
                 completed_groups.append(group)
 
         return completed_groups
