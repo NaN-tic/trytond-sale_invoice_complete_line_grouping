@@ -22,6 +22,7 @@ class SaleInvoiceGroup(ModelSQL, ModelView):
         company_id = Transaction().context.get('company')
 
         config = Config(1)
+        vlist = [x.copy() for x in vlist]
         for value in vlist:
             if not 'code' in value:
                 value['code'] = config.get_multivalue(
