@@ -75,7 +75,7 @@ class Sale(metaclass=PoolMeta):
 class SaleLine(metaclass=PoolMeta):
     __name__ = 'sale.line'
     invoice_group = fields.Many2One('sale.invoice.group', 'Invoice Grouping',
-        ondelete='RESTRICT', depends=['type'], states={
+        ondelete='RESTRICT', states={
             'invisible': Eval('type') != 'line',
             })
 
