@@ -45,8 +45,7 @@ class ConfigurationSequence(metaclass=PoolMeta):
             ('company', 'in', [Eval('company', -1), None]),
             ('sequence_type', '=', Id('sale_invoice_complete_line_grouping',
                 'sequence_type_invoice_group')),
-            ],
-        depends=['company'])
+            ])
 
     @classmethod
     def default_invoice_group_sequence(cls):
