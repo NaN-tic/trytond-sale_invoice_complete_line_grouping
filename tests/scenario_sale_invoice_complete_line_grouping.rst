@@ -210,7 +210,7 @@ Validate Shipments::
     >>> shipment.click('assign_try')
     >>> shipment.click('pick')
     >>> shipment.click('pack')
-    >>> shipment.click('done')
+    >>> shipment.click('do')
     >>> config.user = sale_user.id
     >>> sale.reload()
     >>> len(sale.shipments), len(sale.shipment_returns), len(sale.invoices)
@@ -264,7 +264,7 @@ Validate Shipments::
     >>> shipment.click('assign_try')
     >>> shipment.click('pick')
     >>> shipment.click('pack')
-    >>> shipment.click('done')
+    >>> shipment.click('do')
     >>> config.user = sale_user.id
     >>> sale.reload()
     >>> len(sale.shipments), len(sale.shipment_returns), len(sale.invoices)
@@ -282,7 +282,7 @@ Validate Shipments::
     >>> shipment2.click('assign_try')
     >>> shipment2.click('pick')
     >>> shipment2.click('pack')
-    >>> shipment2.click('done')
+    >>> shipment2.click('do')
     >>> config.user = sale_user.id
     >>> sale.reload()
     >>> len(sale.shipments), len(sale.shipment_returns), len(sale.invoices)
@@ -297,7 +297,7 @@ Validate Shipments::
     >>> shipment3.click('assign_try')
     >>> shipment3.click('pick')
     >>> shipment3.click('pack')
-    >>> shipment3.click('done')
+    >>> shipment3.click('do')
     >>> config.user = sale_user.id
     >>> sale.reload()
     >>> len(sale.shipments), len(sale.shipment_returns), len(sale.invoices)
