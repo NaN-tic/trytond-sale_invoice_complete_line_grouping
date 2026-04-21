@@ -67,7 +67,7 @@ class Sale(metaclass=PoolMeta):
 
     def is_sale_complete(self):
         ' Returns true if the sale is considered complete, false otherwise '
-        if self.invoice_method == 'shipment':
+        if self.invoice_method == 'fulfillment':
             return len(self.get_completed_groups()) > 0
         return True
 

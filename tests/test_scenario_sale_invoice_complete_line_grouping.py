@@ -72,7 +72,7 @@ class Test(unittest.TestCase):
         SaleConfig = Model.get('sale.configuration')
         sale_config = SaleConfig(1)
         sale_config.sale_shipment_method = 'order'
-        sale_config.sale_invoice_method = 'shipment'
+        sale_config.sale_invoice_method = 'fulfillment'
         sale_config.save()
 
         # Create parties
@@ -172,7 +172,7 @@ class Test(unittest.TestCase):
         sale.party = customer
         sale.invoice_complete = True
         sale.payment_term = payment_term
-        sale.invoice_method = 'shipment'
+        sale.invoice_method = 'fulfillment'
         sale_line = SaleLine()
         sale.lines.append(sale_line)
         sale_line.product = product
@@ -200,7 +200,7 @@ class Test(unittest.TestCase):
         self.assertEqual(len(sale.shipment_returns), 0)
         self.assertEqual(len(sale.invoices), 1)
 
-        # Sale 3 lines with an invoice method 'on shipment'
+        # Sale 3 lines with an invoice method 'on fulfillment'
         config.user = sale_user.id
         SaleInvoiceGroup = Model.get('sale.invoice.group')
         group1 = SaleInvoiceGroup(name='G1')
@@ -211,7 +211,7 @@ class Test(unittest.TestCase):
         sale.party = customer
         sale.invoice_complete = True
         sale.payment_term = payment_term
-        sale.invoice_method = 'shipment'
+        sale.invoice_method = 'fulfillment'
         sale_line = SaleLine()
         sale.lines.append(sale_line)
         sale_line.product = product
