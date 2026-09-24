@@ -6,10 +6,6 @@
         <record model="ir.sequence.type" id="sequence_type_invoice_group">
             <field name="name">Sale Invoice Group</field>
         </record>
-        <record model="ir.sequence.type-res.group" id="sequence_type_invoice_group_group_admin">
-            <field name="sequence_type" ref="sequence_type_invoice_group"/>
-            <field name="group" ref="res.group_admin"/>
-        </record>
 
         <record model="ir.sequence" id="sequence_invoice_group">
             <field name="name">Sale Invoice Group</field>
